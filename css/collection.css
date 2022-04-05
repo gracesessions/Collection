@@ -11,22 +11,22 @@ body {
     background-color: #191970;
     color: #ffffff;
 }
+
 .collection {
     display: flex;
     flex-wrap: wrap;
+    text-align: center;
 }
 
 .recordcontainer {
-    padding: 4rem;
+    padding: 4rem 1rem;
     margin: 1rem 2rem;
     display: grid;
     grid-template-rows: 0.3fr 0.7fr;
-    /*align-items: ;*/
-    /*gap: 1rem;*/
-    /*flex-wrap: wrap;*/
-    border-style: solid;
-    border-color: #ffffff;
+    /*border-style: solid;*/
+    /*border-color: #ffffff;*/
     align-items: end;
+    /*justify-content: center;*/
 }
 
 .vinyl {
@@ -38,14 +38,10 @@ body {
 }
 
 .recordinfo {
-    /*display: flex;*/
-    /*!*flex-wrap: wrap;*!*/
     grid-row-start: 1;
     position: absolute;
-    /*align-items: start;*/
-    align-self: start;
+    align-self: center;
     justify-self: center;
-    margin: 2rem;
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
 }
-
-

@@ -35,8 +35,13 @@ function fetchAll(PDO $dbConnection, string $sql, array $params = null): array
 
 function fetchAllRecordsData(PDO $dbConnection): array
 {
-    $sql = (
-    'SELECT `id`, `name`, `artist`, `year`, `record_label`, `song`, `img_name` FROM `records`;');
+     $sql =
+         'SELECT `records`.`id`, `records`.`name`, `artists`.`artist`, `records`.`year`, `record_labels`.`record_label`, `records`.`song`, `records`.`img_name` 
+            FROM `records`
+            INNER JOIN `artists`
+            ON `records`.`artist`=`artists`.`id`
+            INNER JOIN `record_labels`
+            ON `records`.`record_label`=`record_labels`.`id`;';
 
     return fetchAll($dbConnection, $sql);
 }
