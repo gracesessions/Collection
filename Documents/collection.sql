@@ -1,7 +1,7 @@
 DROP TABLE if exists `artists`;
 
 CREATE TABLE `artists` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT, 
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT, 
   `artist` varchar(255) DEFAULT NULL, 
   PRIMARY KEY (`id`)
 );
@@ -25,7 +25,7 @@ INSERT INTO `artists` (`id`, `artist`) VALUES (15, 'The Beatles');
 DROP TABLE if exists `record_labels`;
 
 CREATE TABLE `record_labels` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT, 
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT, 
   `record_label` varchar(255) DEFAULT NULL, 
   PRIMARY KEY (`id`)
 );
@@ -60,7 +60,6 @@ CREATE TABLE `records` (
   CONSTRAINT `fk_artists` FOREIGN KEY (`artist`) REFERENCES `artists`(`id`),
   CONSTRAINT `fk_record_labels` FOREIGN KEY (`record_label`) REFERENCES `record_labels`(`id`)
 );
-
 
 INSERT INTO `records` (`id`, `name`, `artist`, `year`, `record_label`, `song`, `img_name`) VALUES (1, 'Kind of Blue', 1, 1959, 1, 'Blue in Green', 'kindofblue.png');
 INSERT INTO `records` (`id`, `name`, `artist`, `year`, `record_label`, `song`, `img_name`) VALUES (2, 'London Calling', 2, 1979, 2, 'Train in Vain', 'londoncalling.png');

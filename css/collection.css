@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: courier, sans-serif;
+    font-family: courier, serif;
 }
 
 html {
@@ -23,17 +23,12 @@ body {
     margin: 1rem 2rem;
     display: grid;
     grid-template-rows: 0.3fr 0.7fr;
-    /*border-style: solid;*/
-    /*border-color: #ffffff;*/
     align-items: end;
-    /*justify-content: center;*/
 }
 
 .vinyl {
     width: 20rem;
     grid-row-start: 1;
-    /*position: relative;*/
-    /*top: 1rem;*/
     bottom: 1rem;
 }
 
