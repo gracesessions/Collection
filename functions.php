@@ -16,5 +16,6 @@ function displayRecords(array $records): string
             '<img src="images/' . $record['img_name'] . '">' .
             '</div>' .
             '</div>';
-    } return $info;
+    }
+    return $info;
 }

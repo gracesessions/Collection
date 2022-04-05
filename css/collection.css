@@ -11,6 +11,7 @@ body {
     background-color: #191970;
     color: #ffffff;
 }
+
 .collection {
     display: flex;
     flex-wrap: wrap;
@@ -22,9 +23,6 @@ body {
     margin: 1rem 2rem;
     display: grid;
     grid-template-rows: 0.3fr 0.7fr;
-    /*align-items: ;*/
-    /*gap: 1rem;*/
-    /*flex-wrap: wrap;*/
     /*border-style: solid;*/
     /*border-color: #ffffff;*/
     align-items: end;
@@ -37,17 +35,13 @@ body {
     /*position: relative;*/
     /*top: 1rem;*/
     bottom: 1rem;
-    /*justify-content: start;*/
 }
 
 .recordinfo {
     grid-row-start: 1;
     position: absolute;
-    /*align-items: end;*/
     align-self: center;
     justify-self: center;
     margin-top: 2.5rem;
     font-size: 0.9rem;
 }
-
-
