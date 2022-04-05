@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    font-family: courier, serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #191970;
+    color: #ffffff;
+}
+
+.collection {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.recordcontainer {
+    padding: 4rem 1rem;
+    margin: 1rem 2rem;
+    display: grid;
+    grid-template-rows: 0.3fr 0.7fr;
+    align-items: end;
+}
+
+.vinyl {
+    width: 20rem;
+    grid-row-start: 1;
+    bottom: 1rem;
+}
+
+.recordinfo {
+    grid-row-start: 1;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+}
