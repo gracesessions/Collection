@@ -1,3 +1,10 @@
+<?php
+require_once 'functions.php';
+require_once 'db.php';
+$db = 'recorddb';
+$records = fetchAllRecordsData(connectToDB($db));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +19,9 @@
 <body>
 <h1>Record Collection</h1>
 <section class="collection">
-
-<?php
-require_once 'functions.php';
-echo displayRecords($records);
-?>
-
-
-</div>
+    <?php
+    echo displayRecords($records);
+    ?>
 </section>
 </body>
 </html>
