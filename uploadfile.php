@@ -1,6 +1,5 @@
 <?php
 
-
 require_once 'db.php';
 
 function uploadFile(): string
@@ -19,7 +18,7 @@ function uploadFile(): string
             case UPLOAD_ERR_OK:
                 break;
             case UPLOAD_ERR_NO_FILE:
-                return '-success-default.png';
+                throw new RuntimeException('No file sent.');
             case UPLOAD_ERR_INI_SIZE:
             case UPLOAD_ERR_FORM_SIZE:
                 throw new RuntimeException('Exceeded filesize limit.');
@@ -47,7 +46,7 @@ function uploadFile(): string
 
         $allowedTypes = [
             'image/png' => 'png',
-//            'image/jpeg' => 'jpg'
+            'image/jpeg' => 'jpg'
         ];
 
         $isValidFormat = in_array(
@@ -82,49 +81,17 @@ function uploadFile(): string
     }
 }
 
-function addToDb(array $formData, PDO $pdo, string $imageName): bool
-{
-
-    $query = $pdo->prepare(
-        'INSERT INTO `records` (`name`, `artist`, `year`, `record_label`, `song`, `img_name`)'
-        . ' VALUES (:name, :artist, :year, :record_label, :song, :img_name);'
-    );
-
-    $name = $formData['name'];
-    $artist = $formData['artist'];
-    $year = $formData['year'];
-    $record_label = $formData['record_label'];
-    $song = $formData['song'];
-    $img_name = $imageName;
-
-    $query->bindParam(':name', $name);
-    $query->bindParam(':artist', $artist);
-    $query->bindParam(':year', $year);
-    $query->bindParam(':record_label', $record_label);
-    $query->bindParam(':song', $song);
-    $query->bindParam(':img_name', $img_name);
-
-    $inserted = $query->execute();
-
-    return $inserted;
-}
-
 $imageString = uploadFile(); // this calls the function and puts the return value in $imageString
 
 if (strpos(strtolower($imageString), 'success')) { // if the variable contains the string 'success'
 
     $imageString = substr($imageString, 9); // remove the first 9 characters from -success-
 
-    $pdo = connectToDb('recorddb'); // connect to db
+    $valid = dataValidation($_POST); // this is my validation - can ignore
 
-    $formData = sanitiseFormData($_POST);
+    $pdo = connectToDb('collector-app'); // connect to db
 
-    $isValid = validateFormData($formData);
-
-    if ($isValid) {
-        $inserted = addToDb($_POST, $pdo, $imageString); // add to db
-    }
+    $inserted = addToDb($_POST, $pdo, $imageString); // add to db
 }
 
 header("Location: collection.php");
-

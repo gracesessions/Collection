@@ -1,6 +1,6 @@
 <?php
 
-function connectToDB(string $db): PDO
+function connectToDb(string $db): PDO
 {
     $host = 'db';
     $charset = 'utf8mb4';
