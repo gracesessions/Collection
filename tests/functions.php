@@ -44,10 +44,11 @@ class functions extends TestCase
     }
 
     // validation function tests
+    //success test
 
-    public function testGiven1800ReturnTrue()
+    public function testGivenArrayReturnTrue()
     {
-        validateFormData($_POST);
+//        validateFormData($_POST);
 
         $expected = True;
 

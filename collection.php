@@ -77,8 +77,8 @@ $records = fetchAllRecordsData(connectToDb($db));
                 <input type="text" name="song" id="song">
             </p>
             <p>
-                <label for="img">Upload image: </label>
-                <input type="file" name="newFile" id="img">
+                <label for="img_name">Upload image: </label>
+                <input type="file" name="newFile" id="img_name">
             </p>
             <p>
                 <input type="submit" name="submit" id="submit">

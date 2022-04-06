@@ -82,6 +82,48 @@ function uploadFile(): string
     }
 }
 
+function sanitiseFormData(array $formData): array
+{
+    $year = $formData['year'];
+    if ($year === '') {
+        $year = null;
+    }
+    $record_label = $formData['record_label'];
+    if ($record_label === '') {
+        $record_label = null;
+    }
+    $song = $formData['song'];
+    if ($song === '') {
+        $song = null;
+    }
+    $cleanFormData = [
+        'name' => $formData['name'],
+        'artist' => $formData['artist'],
+        'year' => $year,
+        'record_label' => $record_label,
+        'song' => $song,
+        'img_name' => $_FILES['newFile']['name']
+    ];
+    return $cleanFormData;
+}
+
+// test year, recordlabel and song  data type
+// test empty string?
+// test form data data type (barry)
+
+function validateFormData(array $formData): bool
+{
+    $isValid = true;
+    $year = $formData['year'];
+    if (is_numeric($year) && $year>1800 && $year<3000 && strlen($year) == 4)
+    {
+        $isValid = true;
+    } else {
+        $isValid = false;
+    }
+    return $isValid;
+}
+
 function addToDb(array $formData, PDO $pdo, string $imageName): bool
 {
 
@@ -96,6 +138,7 @@ function addToDb(array $formData, PDO $pdo, string $imageName): bool
     $record_label = $formData['record_label'];
     $song = $formData['song'];
     $img_name = $imageName;
+//    $img_name = $formData['img_name'];
 
     $query->bindParam(':name', $name);
     $query->bindParam(':artist', $artist);
@@ -108,6 +151,7 @@ function addToDb(array $formData, PDO $pdo, string $imageName): bool
 
     return $inserted;
 }
+
 
 $imageString = uploadFile(); // this calls the function and puts the return value in $imageString
 
@@ -125,6 +169,14 @@ if (strpos(strtolower($imageString), 'success')) { // if the variable contains t
         $inserted = addToDb($_POST, $pdo, $imageString); // add to db
     }
 }
+
+//echo '<pre>';
+//print_r(sanitiseFormData($_POST));
+//echo '</pre>';
+//
+//echo '<pre>';
+//var_dump(validateFormData($_POST));
+//echo '</pre>';
 
 header("Location: collection.php");
 
