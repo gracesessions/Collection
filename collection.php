@@ -26,17 +26,21 @@ $records = fetchAllRecordsData(connectToDB($db));
 
     <section class="form">
         <form enctype="multipart/form-data" action="addrecord.php" method="post">
-            Name: <input type="text" name="name"><br>
-            Artist: <input type="text" name="artist"><br>
-            Year released: <input type="number" name="year"><br>
-            Record Label: <input type="text" name="record_label"><br>
-            Song: <input type="text" name="song"><br>
-            Image: <input type="file" accept="image/png" name="file"><br>
-            Submit <input type="submit">
+                <input type="text" name="name" id="name">
+                <label for="name">DONE: </label>
+                <input type="text" name="artist" id="artist">
+                <label for="artist">Artist: </label>
+                <input type="number" name="year" id="year">
+                <label for="year">Year released: </label>
+                <input type="text" name="record_label" id="record_label">
+                <label for="record_label">Record Label: </label>
+                <input type="text" name="song" id="song">
+                <label for="song">Song: </label>
+                <input type="file" accept="image/png" name="file" id="song">
+                <label for="song">Image: </label>
+                <input type="submit" name="submit" id="submit">
+                <label for="submit">Submit</label>
         </form>
-        <?php
-//            addToDb();
-        ?>
 
     </section>
 </body>
