@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <form enctype="multipart/form-data" action="addrecord.php" method="post">
-    <p>
+    <div>
         <label for="name">Name: </label>
         <input type="text" name="name" id="name">
-    </p>
-    <p>
+    </div>
+    <div>
         <label for="artist">Artist: </label>
         <select name="artist" id="artist">
             <option value="1">Miles Davis</option>
@@ -23,12 +23,12 @@
             <option value="13">Oscar Peterson Trio</option>
             <option value="14">The Beatles</option>
         </select>
-    </p>
-    <p>
+    </div>
+    <div>
         <label for="year">Year released: </label>
         <input type="number" name="year" id="year">
-    </p>
-    <p>
+    </div>
+    <div>
         <label for="record_label">Record Label: </label>
         <select name="record_label" id="record_label">
             <option value=""></option>
@@ -46,17 +46,17 @@
             <option value="12">Verve</option>
             <option value="13">Parlophone</option>
         </select>
-    </p>
-    <p>
+    </div>
+    <div>
         <label for="song">Song: </label>
         <input type="text" name="song" id="song">
-    </p>
-    <p>
+    </div>
+    <div>
         <label for="img_name">Upload image: </label>
         <input type="file" name="newFile" id="img_name">
-    </p>
-    <p>
+    </div>
+    <div>
         <input type="submit" name="submit" id="submit">
-    </p>
+    </div>
 </form>
 </html>

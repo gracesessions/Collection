@@ -19,15 +19,11 @@ $records = fetchAllRecordsData(connectToDb($db));
 <body>
     <h1>Record Collection</h1>
     <section class="collection">
-        <?php
-        echo displayRecords($records);
-        ?>
+        <?php echo displayRecords($records);?>
     </section>
 
     <section class="form">
-        <?php
-        include "form.php";
-        ?>
+        <?php include "form.php";?>
     </section>
 </body>
 </html>

@@ -19,7 +19,7 @@ class functions extends TestCase
     {
         $expected = '<div class="recordcontainer"><img class="vinyl" src="images/vinyl.png"><div class="recordinfo"><h2>Kind of Blue</h2><p> By Miles Davis</p><p> Released in 1959</p><p> by Columbia Records</p><p>Featuring Blue in Green</p><div class="albumcover"><img src="images/kindofblue.png"></div></div></div>';
 
-        $records[] = array(
+        $records[] = array (
             'id' => 1,
             'name' => 'Kind of Blue',
             'artist' => 'Miles Davis',
@@ -50,16 +50,17 @@ class functions extends TestCase
         $result = sanitiseFormData($array);
 
         $this->assertIsArray($result);
+
         $this->assertCount(0, $result);
     }
 
     public function testGivenStringThrowError2()
     {
         $formData = 'Barry';
+
         $this->expectException(TypeError::class);
 
         $result = sanitiseFormData($formData);
-
     }
 
     public function testGivenArrayReturnCleanArray()
@@ -242,6 +243,7 @@ class functions extends TestCase
         $result = validateFormData($array);
 
         $this->assertEquals($expected, $result);
+
         $this->assertEquals(false, $result);
     }
 }
