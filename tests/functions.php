@@ -65,7 +65,6 @@ class functions extends TestCase
 
     public function testGivenArrayReturnCleanArray()
     {
-
         $expected = array(
             'name' => 'Kind of Blue',
             'artist' => 'Miles Davis',
@@ -149,7 +148,6 @@ class functions extends TestCase
         $record_label = 'Columbia Records';
         $song = 'Blue in Green';
 
-
         $records = array(
             'name' => $name,
             'artist' => $artist,
@@ -165,7 +163,6 @@ class functions extends TestCase
 
     public function testGivenIncorrectYearReturnFalse2()
     {
-
         $expected = false;
 
         $year = 1799;
