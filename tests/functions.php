@@ -19,7 +19,7 @@ class functions extends TestCase
     {
         $expected = '<div class="recordcontainer"><img class="vinyl" src="images/vinyl.png"><div class="recordinfo"><h2>Kind of Blue</h2><p> By Miles Davis</p><p> Released in 1959</p><p> by Columbia Records</p><p>Featuring Blue in Green</p><div class="albumcover"><img src="images/kindofblue.png"></div></div></div>';
 
-        $records[] =  array(
+        $records[] = array(
             'id' => 1,
             'name' => 'Kind of Blue',
             'artist' => 'Miles Davis',
@@ -43,44 +43,206 @@ class functions extends TestCase
         $result = displayRecords($records);
     }
 
-    // validation function tests
-    //success test
-
-    public function testGivenArrayReturnTrue()
+    public function testGivenEmptyArrayThrowError()
     {
-//        validateFormData($_POST);
+        $array = [];
 
-        $expected = True;
+        $result = sanitiseFormData($array);
 
-        $array= [
-            'name' => 'name',
-            'artist' = 'artist',
-            $year = 1800,
+        $this->assertIsArray($result);
+        $this->assertCount(0, $result);
+    }
 
-        //Act - call the function
-        $result = validateFormData($year);
+    public function testGivenStringThrowError2()
+    {
+        $formData = 'Barry';
+        $this->expectException(TypeError::class);
 
-        //Assert - compare the expected result to the actual result
+        $result = sanitiseFormData($formData);
+
+    }
+
+    public function testGivenArrayReturnCleanArray()
+    {
+
+        $expected = array(
+            'name' => 'Kind of Blue',
+            'artist' => 'Miles Davis',
+            'year' => null,
+            'record_label' => null,
+            'song' => null
+        );
+
+        $year = '';
+        $name = 'Kind of Blue';
+        $artist = 'Miles Davis';
+        $record_label = '';
+        $song = '';
+
+        $records = array(
+            'name' => $name,
+            'artist' => $artist,
+            'year' => $year,
+            'record_label' => $record_label,
+            'song' => $song
+        );
+
+        $result = sanitiseFormData($records);
+
         $this->assertEquals($expected, $result);
     }
 
+    public function testGivenCorrectYearReturnTrue()
+    {
+        $expected = true;
 
-//    public function testGivenEmptyArrayReturnNull()
-//    {
-//        $array = [];
-//
-//        $result = validateFormData($array);
-//
-//        $this->assertEquals('', $result);
-//    }
+        $year = 1800;
+        $name = 'Kind of Blue';
+        $artist = 'Miles Davis';
+        $record_label = 'Columbia Records';
+        $song = 'Blue in Green';
+
+        $records = array(
+            'name' => $name,
+            'artist' => $artist,
+            'year' => $year,
+            'record_label' => $record_label,
+            'song' => $song
+        );
+
+        $result = validateFormData($records);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGivenCorrectYearReturnTrue2()
+    {
+        $expected = true;
+
+        $year = 3000;
+        $name = 'Kind of Blue';
+        $artist = 'Miles Davis';
+        $record_label = 'Columbia Records';
+        $song = 'Blue in Green';
+
+        $records = array(
+            'name' => $name,
+            'artist' => $artist,
+            'year' => $year,
+            'record_label' => $record_label,
+            'song' => $song
+        );
+
+        $result = validateFormData($records);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGivenIncorrectYearReturnFalse()
+    {
+        $expected = false;
+
+        $year = 3001;
+        $name = 'Kind of Blue';
+        $artist = 'Miles Davis';
+        $record_label = 'Columbia Records';
+        $song = 'Blue in Green';
 
 
-    // test 1800, 3000, 3001, 1799,
-// test barry data type formdata
-// test year datatype
+        $records = array(
+            'name' => $name,
+            'artist' => $artist,
+            'year' => $year,
+            'record_label' => $record_label,
+            'song' => $song
+        );
 
-//    public function testGivenStringThrowError()
-//    {
-//
-//    }
+        $result = validateFormData($records);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGivenIncorrectYearReturnFalse2()
+    {
+
+        $expected = false;
+
+        $year = 1799;
+        $name = 'Kind of Blue';
+        $artist = 'Miles Davis';
+        $record_label = 'Columbia Records';
+        $song = 'Blue in Green';
+
+
+        $records = array(
+            'name' => $name,
+            'artist' => $artist,
+            'year' => $year,
+            'record_label' => $record_label,
+            'song' => $song
+        );
+
+        $result = validateFormData($records);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGivenIncorrectYearReturnFalse3()
+    {
+        $expected = false;
+
+        $year = 20000;
+        $name = 'Kind of Blue';
+        $artist = 'Miles Davis';
+        $record_label = 'Columbia Records';
+        $song = 'Blue in Green';
+
+        $records = array(
+            'name' => $name,
+            'artist' => $artist,
+            'year' => $year,
+            'record_label' => $record_label,
+            'song' => $song
+        );
+
+        $result = validateFormData($records);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGivenIncorrectYearReturnFalse4()
+    {
+        $expected = false;
+
+        $year = 'Barry';
+        $name = 'Kind of Blue';
+        $artist = 'Miles Davis';
+        $record_label = 'Columbia Records';
+        $song = 'Blue in Green';
+
+        $records = array(
+            'name' => $name,
+            'artist' => $artist,
+            'year' => $year,
+            'record_label' => $record_label,
+            'song' => $song
+        );
+
+        $result = validateFormData($records);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testGivenEmptyArrayThrowError2()
+    {
+        $expected = false;
+
+        $array = [];
+
+        $result = validateFormData($array);
+
+        $this->assertEquals($expected, $result);
+        $this->assertEquals(false, $result);
+    }
 }
+

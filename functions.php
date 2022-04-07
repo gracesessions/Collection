@@ -24,6 +24,13 @@ function displayRecords(array $records): string
 
 function sanitiseFormData(array $formData): array
 {
+    if (!is_array($formData)) {
+        return [];
+    }
+    if (count($formData) == 0) {
+        return [];
+    }
+
     $year = $formData['year'];
     if ($year === '') {
         $year = null;
@@ -41,28 +48,26 @@ function sanitiseFormData(array $formData): array
         'artist' => $formData['artist'],
         'year' => $year,
         'record_label' => $record_label,
-        'song' => $song,
-        'img_name' => $formData['img_name']
+        'song' => $song
     ];
     return $cleanFormData;
 }
 
-// test year, recordlabel and song  data type
-// test empty string?
-// test form data data type (barry)
-
 function validateFormData(array $formData): bool
 {
+    if (!is_array($formData)) {
+        return false;
+    }
+    if (count($formData) == 0) {
+        return false;
+    }
     $isValid = true;
     $year = $formData['year'];
-    if (gettype($year) !== 'integer') {
-        $isValid = false;
-    } elseif ((int)$year < 1800 || (int)$year > 3000) {
+    if (is_numeric($year) && $year>=1800 && $year<=3000 && strlen($year) == 4)
+    {
+        $isValid = true;
+    } else {
         $isValid = false;
     }
     return $isValid;
 }
-
-// test 1800, 3000, 3001, 1799,
-// test barry data type formdata
-// test year datatype
