@@ -1,6 +1,21 @@
+<?php
+require_once 'functions.php';
+require_once 'db.php';
+$db = 'recorddb';
+$records = fetchAllRecordsData(connectToDb($db));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<form enctype="multipart/form-data" action="addrecord.php" method="post">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/collection.css">
+</head>
+<form  class="form" enctype="multipart/form-data" action="addrecord.php" method="post">
+    <h3>Add to collection:</h3>
     <div>
         <label for="name">Name: </label>
         <input type="text" name="name" id="name">

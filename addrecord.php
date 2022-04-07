@@ -84,7 +84,6 @@ function uploadFile(): string
 
 function addToDb(array $formData, PDO $pdo, string $imageName): bool
 {
-
     $query = $pdo->prepare(
         'INSERT INTO `records` (`name`, `artist`, `year`, `record_label`, `song`, `img_name`)'
         . ' VALUES (:name, :artist, :year, :record_label, :song, :img_name);'

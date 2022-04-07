@@ -12,10 +12,41 @@ body {
     color: #ffffff;
 }
 
+nav {
+    text-align: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    font-weight: bold;
+    background-color: #000000;
+    z-index: 99;
+}
+
+.nav-items {
+    margin: 0 2rem;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav li {
+    list-style-type: none;
+}
+
+.nav-items a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0 1rem;
+}
+
 .collection {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
+    justify-content: center;
 }
 
 .recordcontainer {
@@ -24,6 +55,10 @@ body {
     display: grid;
     grid-template-rows: 0.3fr 0.7fr;
     align-items: end;
+}
+
+.albumcover:hover {
+    transform: scale(1.05);
 }
 
 .vinyl {
@@ -43,9 +78,28 @@ body {
 
 .albumcover {
     width: 20rem;
+    transition: 0.3s;
 }
 
 .albumcover img {
     width: 100%;
     height: auto;
+}
+
+.form {
+    border-color: #ffffff;
+    border-style: solid;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    margin: 2rem 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: 2rem;
+}
+
+footer {
+    padding: 2rem;
 }
