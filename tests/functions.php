@@ -174,7 +174,6 @@ class functions extends TestCase
         $record_label = 'Columbia Records';
         $song = 'Blue in Green';
 
-
         $records = array(
             'name' => $name,
             'artist' => $artist,
