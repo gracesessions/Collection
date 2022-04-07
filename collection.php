@@ -2,7 +2,7 @@
 require_once 'functions.php';
 require_once 'db.php';
 $db = 'recorddb';
-$records = fetchAllRecordsData(connectToDB($db));
+$records = fetchAllRecordsData(connectToDb($db));
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ $records = fetchAllRecordsData(connectToDB($db));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/all.min.css">
+<!--    <link rel="stylesheet" href="css/all.min.css">-->
     <link rel="stylesheet" href="css/collection.css">
     <title>Record Collection</title>
 </head>
@@ -19,9 +19,11 @@ $records = fetchAllRecordsData(connectToDB($db));
 <body>
     <h1>Record Collection</h1>
     <section class="collection">
-        <?php
-        echo displayRecords($records);
-        ?>
+        <?php echo displayRecords($records);?>
+    </section>
+
+    <section class="form">
+        <?php include "form.php";?>
     </section>
 </body>
 </html>
